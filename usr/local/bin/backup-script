@@ -45,11 +45,11 @@ Needs the following settings files:
 usage:
         backup-script                    execute all backup profiles with suffix ".bsc"
                                          in /etc/backup-script/profiles
-        
+
         backup-script   -h|--help        this message
         backup-script   -e|--example     create sample settings files in /etc/backup-script
                                          (remove "_example" from the filenames)
-                                         
+
 
 To extract / decrypt:
     - tar commands (example for zstd):
@@ -348,6 +348,10 @@ case $1 in -e|--example)
 	;;
 esac
 
+echo "#################"
+echo "# Backup-Script #"
+echo "#################"
+
 source /etc/backup-script/backup-script.conf
 if [ $? -ne 0 ]; then
 	exit 1
@@ -359,7 +363,7 @@ fi
 
 for profile in /etc/backup-script/profiles/*.bsc; do
 	source "$profile"
-	
+
 	if [ $? -ne 0 ]; then
 
 		exit 1
@@ -381,7 +385,7 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 
 		echo
 		echo Backup started for profile \"$profile\" ... | sed 's#/etc/backup-script/profiles/##'
-		
+
 		if [ "$DELETEMODE" == "1" ]; then
 			echo
 			echo "   "Deleting the whole destination folder:
@@ -417,7 +421,7 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 		else
 				echo "      "no backups found.
 		fi
-		
+
 		if [ -d "$DESTINATION"/$DATE_FORMAT ]; then
 			echo
 			echo "   "Found a backup with the same date - deleting old backup:
@@ -425,7 +429,7 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 			echo "      ""$DT"
 			rm -rf "$DESTINATION"/$DATE_FORMAT
 		fi
-		
+
 		if [ -d "$DESTINATION" ]; then
 			if [ "$(ls "$DESTINATION" | wc -l)" -ge "$KEEP_DAYS" ]; then
 				echo
@@ -715,7 +719,7 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 			bash -c "$POST_COMMAND"
 		fi
 	fi
-	
+
 	unset ENABLE_BACKUP
 	unset DESTINATION
 	unset SOURCES
