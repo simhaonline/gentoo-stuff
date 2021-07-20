@@ -146,7 +146,7 @@ hugepages() {
 }
 
 # WLAN bridging via arp (new, uses a routing table):
-# Needs "dnsmasq" installed (but disabled!), as well as "parprouted".
+# Needs "dnsmasq" and "parprouted" installed.
 # Assign $bridge_devname to your VMs.
 # All VMs will be on the same subnet as the host - starting from $dhcp_range_begin
 wlan_bridge() {
@@ -230,7 +230,7 @@ wlan_bridge() {
 }
 
 # WLAN bridging via arp (old method which uses iptables instead of a routing table):
-# Needs dnsmasq installed (but disabled!), as well as iptables-legacy and parprouted.
+# Needs "dnsmasq", "iptables-legacy" and "parprouted".
 # Assign $bridge_devname to your VMs.
 # All VMs will be on the same subnet as the host - starting from $dhcp_range_begin
 wlan_bridge_iptables() {
