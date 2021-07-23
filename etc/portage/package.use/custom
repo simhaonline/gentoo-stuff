@@ -74,6 +74,7 @@ media-sound/pulseaudio bluetooth -libsamplerate ofono-headset
 net-dns/avahi -gtk mdnsresponder-compat
 net-firewall/iptables nftables
 net-fs/samba ads ldap
+	sys-libs/ldb ldap
 net-misc/curl adns -threads
 net-misc/freerdp server client
 net-misc/megasync::4nykey dolphin
