@@ -172,6 +172,8 @@ DELETEMODE=0
 # The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
 # Backups with the same date/time will be deleted. To allow more backups per day, you may add
 # hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+# NOTE: for the variable KEEP_BACKUPS to work the format MUST be in this order: 
+# left to right - longest time unit to smallest time unit, so it ends up like this: 2021-12-31__23-59
 DATE_FORMAT=$(date +%Y-%m-%d)
 
 # Print the complete command for each entry in SOURCES if set to 1:
@@ -242,6 +244,8 @@ DELETEMODE=0
 # The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
 # Backups with the same date/time will be deleted. To allow more backups per day, you may add
 # hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+# NOTE: for the variable KEEP_BACKUPS to work the format MUST be in this order: 
+# left to right - longest time unit to smallest time unit, so it ends up like this: 2021-12-31__23-59
 DATE_FORMAT=$(date +%Y-%m-%d)
 
 # Print the complete command for each entry in SOURCES if set to 1:
@@ -316,6 +320,8 @@ DELETEMODE=0
 # The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
 # Backups with the same date/time will be deleted. To allow more backups per day, you may add
 # hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+# NOTE: for the variable KEEP_BACKUPS to work the format MUST be in this order: 
+# left to right - longest time unit to smallest time unit, so it ends up like this: 2021-12-31__23-59
 DATE_FORMAT=$(date +%Y-%m-%d)
 
 # Print the complete command for each entry in SOURCES if set to 1:
