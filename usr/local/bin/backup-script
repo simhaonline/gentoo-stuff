@@ -174,7 +174,7 @@ DELETEMODE=0
 # hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
 DATE_FORMAT=$(date +%Y-%m-%d)
 
-# Print the complete command for every entry in SOURCES if set to 1:
+# Print the complete command for each entry in SOURCES if set to 1:
 DEBUG=0
 EOF
 
@@ -244,7 +244,7 @@ DELETEMODE=0
 # hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
 DATE_FORMAT=$(date +%Y-%m-%d)
 
-# Print the complete command for every entry in SOURCES if set to 1:
+# Print the complete command for each entry in SOURCES if set to 1:
 DEBUG=0
 EOF
 
@@ -318,7 +318,7 @@ DELETEMODE=0
 # hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
 DATE_FORMAT=$(date +%Y-%m-%d)
 
-# Print the complete command for every entry in SOURCES if set to 1:
+# Print the complete command for each entry in SOURCES if set to 1:
 DEBUG=0
 EOF
 }
