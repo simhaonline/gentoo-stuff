@@ -160,7 +160,6 @@ PRE_COMMAND=""
 POST_COMMAND=""
 
 # How many backups to keep?
-# Number of days:
 KEEP_BACKUPS=3
 
 # Enable logging (the file might become several MB large):
@@ -231,7 +230,6 @@ PRE_COMMAND=""
 POST_COMMAND=""
 
 # How many backups to keep?
-# Number of days:
 KEEP_BACKUPS=3
 
 # Enable logging (the file might become several MB large):
@@ -306,7 +304,6 @@ virsh dumpxml macOS-spice > /mnt/usb/backup/libvirt-xmls/`date +%Y-%m-%d`_macOS-
 POST_COMMAND=""
 
 # How many backups to keep?
-# Number of days:
 KEEP_BACKUPS=1
 
 # Enable logging (the file might become several MB large):
