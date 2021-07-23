@@ -21,7 +21,7 @@ Backup methods:
             - keep only the desired number of backups
             - rsync-hardlinks: creates a hardlink instead of copying, if a file
               has not changed since the last backup. Can save a lot of disk space.
-              (Only makes sense if KEEP_DAYS > 1)
+              (Only makes sense if KEEP_BACKUPS > 1)
             - custom pre and post backup commands
             - file logging (backup.log in destination folder)
             - measure the time the backup took (time.log in destination folder)
@@ -83,11 +83,6 @@ cat <<EOF >/etc/backup-script/backup-script.conf_example
 # (type locale -a in a shell for available locales)
 LANG="de_DE.UTF-8"
 
-# The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day. 
-# Backups with the same date/time will be deleted. To allow more backups per day, you may add 
-# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
-DATE_FORMAT=$(date +%Y-%m-%d)
-
 # Shutdown the PC after the last backup has finished
 SHUTDOWN=0
 EOF
@@ -98,12 +93,12 @@ cat <<EOF >/etc/backup-script/profiles/01-system.bsc_example
 ENABLE_BACKUP=1
 
 # Destination folder
-# Example: 
+# Example:
 #   DESTINATION="/backup/system"
 DESTINATION="/mnt/usb/backup/system"
 
 # A list of files or folders to create a backup from - seperated by a new-line (Enter).
-# Just use "/" to backup the whole system! In case of the "tar" cmds, this results in one 
+# Just use "/" to backup the whole system! In case of the "tar" cmds, this results in one
 # big file named "sysroot.tar.[xyz]"
 # Alternately use "/*". This results in multiple archives like:
 # sysroot-bin.tar.[xyz], sysroot-usr.tar.[xyz], sysroot-var.tar.[xyz], ...
@@ -166,7 +161,7 @@ POST_COMMAND=""
 
 # How many backups to keep?
 # Number of days:
-KEEP_DAYS=3
+KEEP_BACKUPS=3
 
 # Enable logging (the file might become several MB large):
 LOG_FILE=1
@@ -174,6 +169,11 @@ LOG_FILE=1
 # CAUTION:
 # Setting this to 1 deletes the whole destination folder - including all backups.
 DELETEMODE=0
+
+# The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
+# Backups with the same date/time will be deleted. To allow more backups per day, you may add
+# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+DATE_FORMAT=$(date +%Y-%m-%d)
 
 # Print the complete command for every entry in SOURCES if set to 1:
 DEBUG=0
@@ -185,12 +185,12 @@ cat <<EOF >/etc/backup-script/profiles/02-encrypted.bsc_example
 ENABLE_BACKUP=1
 
 # Destination folder
-# Example: 
+# Example:
 #   DESTINATION="/backup/system"
 DESTINATION="/mnt/usb/backup/encrypted"
 
 # A list of files or folders to create a backup from - seperated by a new-line (Enter).
-# Just use "/" to backup the whole system! In case of the "tar" cmds, this results in one 
+# Just use "/" to backup the whole system! In case of the "tar" cmds, this results in one
 # big file named "sysroot.tar.[xyz]"
 # Alternately use "/*". This results in multiple archives like:
 # sysroot-bin.tar.[xyz], sysroot-usr.tar.[xyz], sysroot-var.tar.[xyz], ...
@@ -232,7 +232,7 @@ POST_COMMAND=""
 
 # How many backups to keep?
 # Number of days:
-KEEP_DAYS=3
+KEEP_BACKUPS=3
 
 # Enable logging (the file might become several MB large):
 LOG_FILE=1
@@ -240,6 +240,11 @@ LOG_FILE=1
 # CAUTION:
 # Setting this to 1 deletes the whole destination folder - including all backups.
 DELETEMODE=0
+
+# The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
+# Backups with the same date/time will be deleted. To allow more backups per day, you may add
+# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+DATE_FORMAT=$(date +%Y-%m-%d)
 
 # Print the complete command for every entry in SOURCES if set to 1:
 DEBUG=0
@@ -251,12 +256,12 @@ cat <<EOF >/etc/backup-script/profiles/03-vms.bsc_example
 ENABLE_BACKUP=1
 
 # Destination folder
-# Example: 
+# Example:
 #   DESTINATION="/backup/system"
 DESTINATION="/mnt/usb/backup/vms"
 
 # A list of files or folders to create a backup from - seperated by a new-line (Enter).
-# Just use "/" to backup the whole system! In case of the "tar" cmds, this results in one 
+# Just use "/" to backup the whole system! In case of the "tar" cmds, this results in one
 # big file named "sysroot.tar.[xyz]"
 # Alternately use "/*". This results in multiple archives like:
 # sysroot-bin.tar.[xyz], sysroot-usr.tar.[xyz], sysroot-var.tar.[xyz], ...
@@ -302,7 +307,7 @@ POST_COMMAND=""
 
 # How many backups to keep?
 # Number of days:
-KEEP_DAYS=1
+KEEP_BACKUPS=1
 
 # Enable logging (the file might become several MB large):
 LOG_FILE=1
@@ -310,6 +315,11 @@ LOG_FILE=1
 # CAUTION:
 # Setting this to 1 deletes the whole destination folder - including all backups.
 DELETEMODE=0
+
+# The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
+# Backups with the same date/time will be deleted. To allow more backups per day, you may add
+# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+DATE_FORMAT=$(date +%Y-%m-%d)
 
 # Print the complete command for every entry in SOURCES if set to 1:
 DEBUG=0
@@ -369,9 +379,9 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 		exit 1
 	fi
 
-	if [ "$ENABLE_BACKUP" == "1" ]; then		
+	if [ "$ENABLE_BACKUP" == "1" ]; then
 		IFS=$' '
-		for i in $(echo DESTINATION SOURCES EXCLUDES COMMAND ENCRYPT PASSWORD PRE_COMMAND POST_COMMAND KEEP_DAYS LOG_FILE DELETEMODE DEBUG); do
+		for i in $(echo DESTINATION SOURCES EXCLUDES COMMAND ENCRYPT PASSWORD PRE_COMMAND POST_COMMAND KEEP_BACKUPS LOG_FILE DELETEMODE DEBUG); do
 			declare TESTVAR=$i
 			if [ -z "${!TESTVAR+x}" ]; then
 				echo
@@ -431,10 +441,10 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 		fi
 
 		if [ -d "$DESTINATION" ]; then
-			if [ "$(ls "$DESTINATION" | wc -l)" -ge "$KEEP_DAYS" ]; then
+			if [ "$(ls "$DESTINATION" | wc -l)" -ge "$KEEP_BACKUPS" ]; then
 				echo
 				echo "   ""Deleting old Backups:"
-				while [ "$(ls "$DESTINATION" | wc -l)" -ge "$KEEP_DAYS" ]; do
+				while [ "$(ls "$DESTINATION" | wc -l)" -ge "$KEEP_BACKUPS" ]; do
 					COUNT=1
 					for i in "$DESTINATION"/*; do
 						declare ND$COUNT=$i
@@ -729,7 +739,7 @@ for profile in /etc/backup-script/profiles/*.bsc; do
 	unset PASSWORD
 	unset PRE_COMMAND
 	unset POST_COMMAND
-	unset KEEP_DAYS
+	unset KEEP_BACKUPS
 	unset LOG_FILE
 	unset DELETEMODE
 	unset DEBUG
