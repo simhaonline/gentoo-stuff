@@ -109,30 +109,22 @@ DESTINATION="/mnt/usb/backup/system"
 #	/var/lib/libvirt/images/*.qcow2
 #	"
 SOURCES="
-/*
+/
 "
 
 # Files and folders to exclude from the backup - seperated by a new-line (Enter) like above:
 # (needs a leading "/")
 EXCLUDES="
-/dev/*
 /home/*
 /home/.*
 /lost+found
-/media/*
-/media/.*
-/proc/*
 /root/*
 /root/.*
-/run/*
-/sys/*
 /tmp/*
 /tmp/.*
 /var/lib/libvirt/images/*.qcow2
 /var/lib/libvirt/images/*.raw
 /var/swapfile
-/var/tmp/asd/*
-/var/tmp/asd/.*
 /var/tmp/portage/*
 /var/tmp/portage/.*
 /var/tmp/notmpfs/*
@@ -370,16 +362,16 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-if [ -z $DATE_FORMAT ]; then
-	DATE_FORMAT=$(date +%Y-%m-%d)
-fi
-
 for profile in /etc/backup-script/profiles/*.bsc; do
 	source "$profile"
 
 	if [ $? -ne 0 ]; then
 
 		exit 1
+	fi
+
+	if [ -z $DATE_FORMAT ]; then
+		DATE_FORMAT=$(date +%Y-%m-%d)
 	fi
 
 	if [ "$ENABLE_BACKUP" == "1" ]; then
