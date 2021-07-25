@@ -142,7 +142,7 @@ ENCRYPT=0
 # Encryption password:
 # For safety store the password in an extra file.
 # Example:
-#	PASSWORD=$(cat /etc/backup-script/password)
+#	PASSWORD=\$(cat /etc/backup-script/password)
 PASSWORD=""
 
 # Command to be executed BEFORE starting the backup (e.g. mount an USB drive):
@@ -163,15 +163,14 @@ DELETEMODE=0
 
 # The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
 # Backups with the same date/time will be deleted. To allow more backups per day, you may add
-# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=\$(date +%Y-%m-%d__%Hh%Mm%Ss)
 # NOTE: for the variable KEEP_BACKUPS to work the format MUST be in this order: 
-# left to right - longest time unit to smallest time unit, so it ends up like this: 2021-12-31__23-59
-DATE_FORMAT=$(date +%Y-%m-%d)
+# left to right - longest time unit to shortest time unit, so it ends up like this: 2021-12-31__23-59
+DATE_FORMAT=\$(date +%Y-%m-%d)
 
 # Print the complete command for each entry in SOURCES if set to 1:
 DEBUG=0
 EOF
-
 # encrypted files / folders example:
 cat <<EOF >/etc/backup-script/profiles/02-encrypted.bsc_example
 # Activate this backup profile? ("1" or "0")
@@ -214,8 +213,8 @@ ENCRYPT=1
 # Encryption password:
 # For safety store the password in an extra file.
 # Example:
-#	PASSWORD=$(cat /etc/backup-script/password)
-PASSWORD="$(cat /etc/backup-script/password)"
+#	PASSWORD=\$(cat /etc/backup-script/password)
+PASSWORD="\$(cat /etc/backup-script/password)"
 
 # Command to be executed BEFORE starting the backup (e.g. mount an USB drive):
 PRE_COMMAND=""
@@ -235,10 +234,10 @@ DELETEMODE=0
 
 # The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
 # Backups with the same date/time will be deleted. To allow more backups per day, you may add
-# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=\$(date +%Y-%m-%d__%Hh%Mm%Ss)
 # NOTE: for the variable KEEP_BACKUPS to work the format MUST be in this order: 
-# left to right - longest time unit to smallest time unit, so it ends up like this: 2021-12-31__23-59
-DATE_FORMAT=$(date +%Y-%m-%d)
+# left to right - longest time unit to shortest time unit, so it ends up like this: 2021-12-31__23-59
+DATE_FORMAT=\$(date +%Y-%m-%d)
 
 # Print the complete command for each entry in SOURCES if set to 1:
 DEBUG=0
@@ -285,15 +284,15 @@ ENCRYPT=0
 # Encryption password:
 # For safety store the password in an extra file.
 # Example:
-#	PASSWORD=$(cat /etc/backup-script/password)
+#	PASSWORD=\$(cat /etc/backup-script/password)
 PASSWORD=""
 
 # Command to be executed BEFORE starting the backup (e.g. mount an USB drive):
-PRE_COMMAND="\
-mkdir -p /mnt/usb/backup/libvirt-xmls; \
-virsh dumpxml win10 > /mnt/usb/backup/libvirt-xmls/`date +%Y-%m-%d`_win10.xml; \
-virsh dumpxml macOS-gpu > /mnt/usb/backup/libvirt-xmls/`date +%Y-%m-%d`_macOS-gpu.xml; \
-virsh dumpxml macOS-spice > /mnt/usb/backup/libvirt-xmls/`date +%Y-%m-%d`_macOS-spice.xml; \
+PRE_COMMAND="\\
+mkdir -p /mnt/usb/backup/libvirt-xmls; \\
+virsh dumpxml win10 > /mnt/usb/backup/libvirt-xmls/\`date +%Y-%m-%d\`_win10.xml; \\
+virsh dumpxml macOS-gpu > /mnt/usb/backup/libvirt-xmls/\`date +%Y-%m-%d\`_macOS-gpu.xml; \\
+virsh dumpxml macOS-spice > /mnt/usb/backup/libvirt-xmls/\`date +%Y-%m-%d\`_macOS-spice.xml; \\
 "
 
 # Command to be executed AFTER finishing the backup:
@@ -311,10 +310,10 @@ DELETEMODE=0
 
 # The date format for the destination sub-folder. Default is YYYY-MM-DD, Which will allow one backup per day.
 # Backups with the same date/time will be deleted. To allow more backups per day, you may add
-# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=$(date +%Y-%m-%d__%Hh%Mm%Ss)
+# hours/minutes/seconds to the destination folder like this: DATE_FORMAT=\$(date +%Y-%m-%d__%Hh%Mm%Ss)
 # NOTE: for the variable KEEP_BACKUPS to work the format MUST be in this order: 
-# left to right - longest time unit to smallest time unit, so it ends up like this: 2021-12-31__23-59
-DATE_FORMAT=$(date +%Y-%m-%d)
+# left to right - longest time unit to shortest time unit, so it ends up like this: 2021-12-31__23-59
+DATE_FORMAT=\$(date +%Y-%m-%d)
 
 # Print the complete command for each entry in SOURCES if set to 1:
 DEBUG=0
