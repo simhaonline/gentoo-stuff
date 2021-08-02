@@ -352,20 +352,36 @@ case $1 in -e|--example)
 	;;
 esac
 
-echo "#################"
-echo "# Backup-Script #"
-echo "#################"
+if [ ! -d /etc/backup-script/profiles ]; then
+	usage
+	exit 1
+fi
 
 source /etc/backup-script/backup-script.conf
 if [ $? -ne 0 ]; then
+	usage
 	exit 1
 fi
 
 for profile in /etc/backup-script/profiles/*.bsc; do
+	if [ -f $profile ]; then
+		PROFILES_OK=1
+	fi
+done
+
+if [ "$PROFILES_OK" != "1" ]; then
+	usage
+	exit 1
+fi
+
+echo "#################"
+echo "# Backup-Script #"
+echo "#################"
+for profile in /etc/backup-script/profiles/*.bsc; do
 	source "$profile"
 
 	if [ $? -ne 0 ]; then
-
+		usage
 		exit 1
 	fi
 
