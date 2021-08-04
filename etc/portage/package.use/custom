@@ -33,7 +33,11 @@ dev-db/sqlite -icu
 dev-lang/mono minimal
 dev-lang/python -bluetooth tk
 dev-python/PyQt5 webchannel
-dev-qt/qt-creator beautifier doc clang cmake cppcheck git lsp python
+#dev-python/spyder
+	dev-python/python-lsp-server all-plugins
+	net-libs/zeromq drafts
+	x11-libs/wxGTK gstreamer
+dev-qt/qt-creator android autotools beautifier doc clang cmake cppcheck git lsp modeling python
 	dev-python/pyside2 location positioning printsupport quick webchannel
 dev-qt/qtmultimedia gstreamer
 dev-util/kdevelop subversion reviewboard hex
@@ -67,6 +71,8 @@ media-sound/carla::qgj sf2 vst
 media-sound/musescore webengine
 # media-tv/droidcam
 	dev-libs/libdbusmenu gtk3
+media-video/handbrake gstreamer
+	media-video/ffmpeg fdk
 media-video/mpv -X -egl -lcms -opengl -wayland -xv
 media-video/pipewire extra gstreamer jack-client
 media-sound/pulseaudio bluetooth -libsamplerate ofono-headset

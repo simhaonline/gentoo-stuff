@@ -28,6 +28,11 @@ app-misc/appimagelauncher-bin
 
 dev-db/dbeaver-bin
 dev-python/pyinstaller
+dev-python/spyder
+	dev-python/inflection
+	dev-python/qstylizer
+	dev-python/spyder-kernels
+	sci-libs/rtree
 dev-qt/qt-creator
 dev-util/perf
 dev-util/pycharm-community
@@ -48,7 +53,9 @@ media-sound/carla::qgj
 media-sound/jamin
 media-sound/pulseaudio-modules-bt
 media-sound/scream
+media-sound/soundkonverter
 media-video/droidcam
+media-video/handbrake::qgj **
 media-video/pipewire
 
 net-dns/mdns-repeater
@@ -70,6 +77,7 @@ sys-apps/pacman
 	app-crypt/archlinux-keyring
 	sys-apps/pacman-mirrorlist
 	sys-devel/arch-install-scripts
+=sys-apps/systemd-249.2
 sys-block/systemd-swap
 	dev-python/sysv_ipc
 sys-fs/aufs-util

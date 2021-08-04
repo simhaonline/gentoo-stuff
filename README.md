@@ -46,14 +46,14 @@ What it does, is:
 1. adding a new bridge device, which has to be assigned to all guests
 2. starting *"dnsmasq"* which uses DHCP with a custom IP range
 3. creating a new table via "ip rule add" and adding all possible IPs from the DHCP IP range to it
-4. routing all these IPs through the hosts gateway. You can print the rules with:<br/>`ip rule | grep --color=never 99; echo; echo Table 99:; ip route show table 99`
+4. routing all these IPs through the hosts gateway (actually the dnsmasq server). You can print the rules with:<br/>`ip rule | grep --color=never 99; echo; echo Table 99:; ip route show table 99`
 5. finally starting "parprouted". This is needed, because it will "join" the involved interfaces (wlan0 and bridge0) to one address space (the hosts subnet)
 
 *Requirements:*
 - `net.ipv4.ip_forward = 1` in */etc/sysctl.conf*
 - the same bridge device (e.g. bridge0) assigned to each guests network interface. The bridge will be created if desired.
-- *net-dns/dnsmasq* installed but disabled (will be invoked by the script)
-- *net-firewall/parprouted* installed. Not in gentoo portage but I found an old ebuild and fixed it. Get it from my [overlay](https://github.com/q-g-j/qgj-overlay)
+- *net-dns/dnsmasq*
+- *net-firewall/parprouted* - not in gentoo portage but I found an old ebuild and fixed it. Get it from my [overlay](https://github.com/q-g-j/qgj-overlay)
 - if I remember correctly, it was necessary to set *DNSStubListener=no* inside [*/etc/systemd/resolved.conf*](https://github.com/q-g-j/gentoo-stuff/blob/master/etc/systemd/resolved.conf) to avoid conflicts between systemd and dnsmasq.
 
 *Instructions:*<br/><br/>
