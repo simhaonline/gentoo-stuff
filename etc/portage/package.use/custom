@@ -32,6 +32,7 @@ app-text/calibre -python_single_target_python3_8
 dev-db/sqlite -icu
 dev-lang/mono minimal
 dev-lang/python -bluetooth tk
+dev-lang/rust rustfmt
 dev-python/PyQt5 webchannel
 #dev-python/spyder
 	dev-python/python-lsp-server all-plugins
