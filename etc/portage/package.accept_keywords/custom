@@ -27,6 +27,10 @@ app-emulation/wine-vanilla
 app-misc/appimagelauncher-bin
 
 dev-db/dbeaver-bin
+dev-dotnet/dotnetcore-sdk-bin:6.0 **
+	dev-dotnet/dotnetcore-sdk-bin-common **
+dev-lang/kotlin-bin
+	*/*::spark-overlay
 dev-python/pyinstaller
 dev-python/spyder
 	dev-util/cookiecutter
@@ -35,6 +39,14 @@ dev-python/spyder
 	dev-python/spyder-kernels
 	sci-libs/rtree
 dev-qt/qt-creator
+dev-util/msbuild
+	dev-dotnet/msbuild-tasks-api
+	dev-dotnet/msbuild-defaulttasks
+	dev-dotnet/msbuild-roslyn-csc
+	dev-dotnet/buildtools
+	dev-dotnet/newtonsoft-json
+	dev-dotnet/system-reflection-metadata
+	dev-dotnet/system-collections-immutable
 dev-util/perf
 dev-util/pycharm-community
 dev-util/sccache

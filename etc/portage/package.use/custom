@@ -30,6 +30,7 @@ app-misc/mc -slang
 app-text/calibre -python_single_target_python3_8
 
 dev-db/sqlite -icu
+dev-lang/kotlin-bin javascript
 dev-lang/mono minimal
 dev-lang/python -bluetooth tk
 dev-lang/rust rustfmt
