@@ -56,6 +56,7 @@ games-action/ATLauncher
 games-util/lutris
 
 kde-misc/colord-kde
+kde-misc/plasma-redshift-control **
 
 media-gfx/converseen
 media-sound/ardour::4nykey

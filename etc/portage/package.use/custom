@@ -1,24 +1,24 @@
 app-admin/keepassxc autotype browser keeshare
 app-crypt/sirikali kwallet
-
+app-editors/emacs xft
 app-emulation/cockpit-machines::cockpit
 	app-emulation/libvirt firewalld lvm
 	sys-fs/udisks lvm
 	net-libs/libssh server
 	sys-libs/libblockdev lvm
-app-emulation/libguestfs libvirt
+app-emulation/libguestfs libvirt introspection lua python ruby
 	dev-ml/lablgtk gnomecanvas
 app-emulation/lxc doc man
 #app-emulation/lxd
 	dev-util/xdelta lzma
 app-emulation/looking-glass winhost
+app-emulation/libvirt lvm numa parted virt-network
+	net-dns/dnsmasq script
 app-emulation/qemu io-uring spice ssh usb usbredir vhost-user-fs virgl
+app-emulation/snapd -cgroup-hybrid gtk kde
 app-emulation/virt-manager
 	net-misc/spice-gtk usbredir
 	media-libs/freetype harfbuzz
-app-emulation/libvirt lvm numa parted virt-network
-	net-dns/dnsmasq script
-app-emulation/snapd -cgroup-hybrid gtk kde
 app-emulation/wine-staging faudio netapi mingw osmesa themes
 app-emulation/wine-vanilla faudio netapi mingw osmesa
 	media-libs/libsdl2 haptic
@@ -105,4 +105,5 @@ sys-fs/squashfs-tools lz4 lzma
 sys-libs/ncurses -gpm
 sys-kernel/linux-firmware unknown-license
 
+x11-misc/redshift appindicator geoclue
 x11-terms/xterm Xaw3d toolbar
